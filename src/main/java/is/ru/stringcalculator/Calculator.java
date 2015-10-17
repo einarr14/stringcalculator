@@ -6,12 +6,15 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
-        if(text.contains("\n"))
+        else if(text.contains("//"))
         {
-            text = text.replace('\n', ',');
+            String delimiters = text.substring(text.indexOf("//") + 2, text.indexOf("\n"));
+            String numbers = text.substring(text.lastIndexOf("\n") + 1);
+            return sum(splitNumbers(numbers, delimiters));
         }
-		if(text.contains(",")){
-			return sum(splitNumbers(text));
+		if(text.contains(",") || text.contains("\n")){
+            String delimiters = ",|\n";
+			return sum(splitNumbers(text, delimiters));
 		}
 		else
 			return 1;
@@ -21,8 +24,8 @@ public class Calculator {
 		return Integer.parseInt(number);
 	}
 
-	private static String[] splitNumbers(String numbers){
-	    return numbers.split(",");
+	private static String[] splitNumbers(String numbers, String delimiters){
+	    return numbers.split(delimiters);
 	}
       
     private static int sum(String[] numbers){

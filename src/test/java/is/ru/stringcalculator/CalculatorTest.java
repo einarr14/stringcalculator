@@ -35,7 +35,17 @@ public class CalculatorTest {
     }
     
     @Test
-    public void testNewLine(){
+    public void testTwoNewLine(){
     	assertEquals(6, Calculator.add("1\n2\n3"));
+    }
+
+    @Test
+    public void testDelimiters() {
+    	assertEquals(6, Calculator.add("//;\n1;2;3"));
+    }
+
+    @Test
+    public void testDelimiters2() {
+    	assertEquals(6, Calculator.add("//Z\n1Z2Z3"));
     }
 }
