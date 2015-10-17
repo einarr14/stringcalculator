@@ -37,9 +37,10 @@ public class Calculator {
             {
         		negativeNumbers += number + ",";
         	}
-
+            if(toInt(number) < 1001)
+            {
                 total += toInt(number);
-            
+            }
 		}
 
 		if(negativeNumbers.isEmpty())
