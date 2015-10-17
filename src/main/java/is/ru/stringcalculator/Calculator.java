@@ -38,7 +38,8 @@ public class Calculator {
         		negativeNumbers += number + ",";
         	}
 
-				total += toInt(number);
+                total += toInt(number);
+            
 		}
 
 		if(negativeNumbers.isEmpty())
