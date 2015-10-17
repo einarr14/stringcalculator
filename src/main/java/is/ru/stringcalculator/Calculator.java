@@ -8,11 +8,25 @@ public class Calculator {
 		}
         else if(text.contains("//"))
         {
-            String delimiters = text.substring(text.indexOf("//") + 2, text.indexOf("\n"));
+            String delimiters = "";
+            if(text.contains("//["))
+            {
+                int i = text.indexOf('[') + 1 ;
+                while(text.charAt(i) != ']')
+                {
+                    delimiters += "\\";
+                    delimiters += text.charAt(i);
+                    i++;
+                }
+            }
+            else
+            {
+                delimiters = text.substring(text.indexOf("//") + 2, text.indexOf("\n"));
+            }
             String numbers = text.substring(text.lastIndexOf("\n") + 1);
             return sum(splitNumbers(numbers, delimiters));
         }
-		if(text.contains(",") || text.contains("\n")){
+		else if(text.contains(",") || text.contains("\n")){
             String delimiters = ",|\n";
 			return sum(splitNumbers(text, delimiters));
 		}
