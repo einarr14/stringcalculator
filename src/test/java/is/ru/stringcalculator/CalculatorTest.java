@@ -48,4 +48,13 @@ public class CalculatorTest {
     public void testDelimiters2() {
     	assertEquals(6, Calculator.add("//Z\n1Z2Z3"));
     }
+    @Test
+    public void testNegativeException() {
+    	try {
+    		Calculator.add("1,-2,-3");
+    	}
+    	catch(Exception ex) {
+    		assertEquals("Negatives not allowed:-2,-3", ex.getMessage());
+    	}
+    }
 }
